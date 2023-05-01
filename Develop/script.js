@@ -2,6 +2,12 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+
+  // Display current day
+  var displayCurrentDay = $('#currentDay');
+  var currentDate = dayjs().format('ddd, MMM D, YYYY h:mm A');
+  displayCurrentDay.text(currentDate);
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
