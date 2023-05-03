@@ -23,6 +23,11 @@ $(function () {
     var n = element.id.indexOf('-');
     var divHour = parseInt(element.id.substring(n + 1, element.id.length));
 
+    // Getting the value from local storage
+    var textValue = JSON.parse(localStorage.getItem(element.id));
+    // Setting the decription area to the text value from the local storage
+    $(this).find('.description').val(textValue);
+
     // Setting the correct class 
     if (divHour < currentHour) {
       $(this).addClass('past');
@@ -33,28 +38,12 @@ $(function () {
     }
   });
 
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-
-  var userInput = JSON.parse(localStorage.getItem(''));
-
-
-  //
-  //  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-  $(btnSave).on('click', function (event) {
-    var target = $(event.target);
-    alert(target.parent().id);
-    console.log(target);
+  $(btnSave).on('click', function () {
+    // Getting parent element id
+    var hourId = $(this).parent()[0].id;
+    // Getting the text value
+    var textValue = $(this).parent().find('.description').val().trim();
+    // Saving to local storage
+    localStorage.setItem(hourId, JSON.stringify(textValue));
   })
-
-
 });
-
