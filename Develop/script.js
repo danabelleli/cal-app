@@ -23,11 +23,11 @@ $(function () {
 
     // Setting the correct class 
     if (divHour < currentHour) {
-      $('#' + element.id).addClass('past');
+      $(this).addClass('past');
     } else if (divHour === currentHour) {
-      $('#' + element.id).addClass('present');
+      $(this).addClass('present');
     } else if (divHour > currentHour) {
-      $('#' + element.id).addClass('future');
+      $(this).addClass('future');
     }
   });
 
