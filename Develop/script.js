@@ -26,7 +26,11 @@ $(function () {
     // Getting the value from local storage
     var textValue = JSON.parse(localStorage.getItem(element.id));
     // Setting the decription area to the text value from the local storage
-    $(this).find('.description').val(textValue);
+    if (textValue !== null) {
+      $(this).find('.description').val(textValue);
+    } else {
+      $(this).find('.description').val('');
+    }
 
     // Setting the correct class 
     if (divHour < currentHour) {
